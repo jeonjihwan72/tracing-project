@@ -8,6 +8,10 @@ class Pacman {
         this.direction = DIRECTION_RIGHT;
         this.currentFrame = 1;
         this.frameCount = 7;    // ./source/animations.gif frame count
+
+        setInterval(() => {
+            this.changeAnimation();
+        }, 100);
     }
 
     moveProcess() {
@@ -71,7 +75,9 @@ class Pacman {
 
     changeDirectionIfPossible() {}
 
-    changeAnimation() {}
+    changeAnimation() {
+        this.currentFrame == this.frameCount ? 1 : this.currentFrame + 1;
+    }
 
     draw() {}
 
