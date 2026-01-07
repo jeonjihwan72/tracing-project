@@ -133,3 +133,23 @@ let createNewPacman = () => {
 
 createNewPacman();
 gameLoop();
+
+window.addEventListener("keydown", (event) => {
+    let k = event.keyCode;
+
+    setTimeout(() => {
+        if (k == 37 || k == 65) {   // when push arrow left or key 'a'
+            // left
+            pacman.nextDirection = DIRECTION_LEFT;
+        } else if (k == 38 || k == 87) {    // when push arrow up or key 'w'
+            // up
+            pacman.nextDirection = DIRECTION_UP;
+        } else if (k == 39 || k == 68) {    // when push arrow right or key 'd'
+            // right
+            pacman.nextDirection = DIRECTION_RIGHT;
+        } else if (k == 40 || k == 83) {    // when push arrow down or key 's'
+            // bottom
+            pacman.nextDirection = DIRECTION_BOTTOM;
+        }
+    }, 1);
+})
