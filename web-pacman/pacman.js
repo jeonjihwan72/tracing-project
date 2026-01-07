@@ -22,7 +22,7 @@ class Pacman {
         }
     }
 
-    eat() {}
+    eat() { }
 
     moveBackwards() {
         switch (this.direction) {
@@ -71,15 +71,41 @@ class Pacman {
         return false;
     }
 
-    checkGhostCollision() {}
+    checkGhostCollision() { }
 
-    changeDirectionIfPossible() {}
+    changeDirectionIfPossible() { }
 
     changeAnimation() {
         this.currentFrame == this.frameCount ? 1 : this.currentFrame + 1;
     }
 
-    draw() {}
+    draw() {
+        canvasContext.save();
+        canvasContext.translate(
+            this.x + oneBlockSize / 2,
+            this.y + oneBlockSize / 2
+        );
+
+        canvasContext.rotate(this.direction * 90 * Math.PI / 180);
+        canvasContext.translate(
+            -this.x - oneBlockSize / 2,
+            -this.y - oneBlockSize / 2
+        );
+
+        canvasContext.drawImage(
+            pacmanFrames,
+            (this.currentFrame -1)/ oneBlockSize,
+            0,
+            oneBlockSize,
+            oneBlockSize,
+            this.x,
+            this.y,
+            this.width,
+            this.height
+        );
+
+        canvasContext.restore();
+    }
 
     getMapX() {
         return parseInt(this.x / oneBlockSize);
